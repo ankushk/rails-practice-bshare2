@@ -1,0 +1,24 @@
+<h1> Dashboard </h1>
+
+<div id="user_files">
+<% current_user.bfiles.each do |bfile| %>
+<p>
+<%= link_to "#{bfile.datafile_file_name}", bfile.datafile.url %>
+</p>
+<% %>
+<% %>
+<% %>
+</div>
+<% end %>
+
+
+<div id="file_upload">
+<h3> Upload files </h3>
+
+<%= form_for ([current_user, current_user.bfiles.build]) , :url => url_for(:controller => 'dashboard', :action => 'upload'), :html => { :multipart => true } do |form| %>
+  <%= form.file_field :datafile %>
+  <p>
+    <%= form.submit "Upload" %>
+  </p>
+<% end %>
+</div>
