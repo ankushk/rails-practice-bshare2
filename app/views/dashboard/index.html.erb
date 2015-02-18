@@ -1,7 +1,7 @@
 <h1> Dashboard </h1>
 
 <div id="user_files">
-<% current_user.bfiles.each do |bfile| %>
+<% current_user.bfiles.order(:created_at).reverse_order.each do |bfile| %>
 <p>
 <%= link_to "#{bfile.datafile_file_name}", controller: 'dashboard', action: 'download', bfile: bfile %>
 <%= link_to "Delete", controller: 'dashboard', action: 'deletefile', bfile: bfile %>
